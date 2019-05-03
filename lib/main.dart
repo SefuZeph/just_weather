@@ -54,7 +54,7 @@ class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'JustWeather',
+      title: 'Just Weather',
       theme: ThemeData(
         brightness: Brightness.light,
         primaryColor: Colors.white,
@@ -77,19 +77,17 @@ class MyAppState extends State<MyApp> {
         ),
         body: SingleChildScrollView(
           child: Container(
-            decoration:
-                new BoxDecoration(
-                    color: Color.fromRGBO(31, 42, 255, 1.0),
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      // Colors are easy thanks to Flutter's Colors class.
-                      Color.fromRGBO(31, 42, 255, 1.0),
-                      Color.fromRGBO(230, 60, 167, 1.0),
-                    ],
-                  )
-                ),
+            decoration: new BoxDecoration(
+                color: Color.fromRGBO(31, 42, 255, 1.0),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    // Colors for gradients
+                    Color.fromRGBO(31, 42, 255, 1.0),
+                    Color.fromRGBO(230, 60, 167, 1.0),
+                  ],
+                )),
             child: FutureBuilder<WeatherModel>(
               future: getWeather(currentLocation['latitude'].toString(),
                   currentLocation['longitude'].toString()),
@@ -113,46 +111,48 @@ class MyAppState extends State<MyApp> {
                           color: Colors.transparent,
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Image.network(
-                              'https://openweathermap.org/img/w/${model.weather[0].icon}.png',
-                              width: 50,
-                              height: 50,
-                            ),
-                            Text(
-                              '${model.main.temp}°C',
-                              style: TextStyle(
-                                  fontSize: 40.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                            Text(
-                              '${model.name}',
-                              style: TextStyle(
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                            Text(
-                              '${model.main.temp_max}/${model.main.temp_min}',
-                              style: TextStyle(
-                                fontSize: 15.0,
-                                fontFamily: 'Roboto',
-                                color: Colors.white70,
+                        child: Center(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Image.network(
+                                'https://openweathermap.org/img/w/${model.weather[0].icon}.png',
+                                width: 50,
+                                height: 50,
                               ),
-                            ),
-                            Text(
-                              '${model.weather[0].description}'.toUpperCase(),
-                              style: TextStyle(
-                                fontSize: 15.0,
-                                fontFamily: 'Roboto',
-                                color: Colors.white70,
+                              Text(
+                                '${model.main.temp}°C',
+                                style: TextStyle(
+                                    fontSize: 40.0,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
                               ),
-                            ),
-                          ],
+                              Text(
+                                '${model.name}',
+                                style: TextStyle(
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              Text(
+                                '${model.main.temp_max}/${model.main.temp_min}',
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  fontFamily: 'Roboto',
+                                  color: Colors.white70,
+                                ),
+                              ),
+                              Text(
+                                '${model.weather[0].description}'.toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  fontFamily: 'Roboto',
+                                  color: Colors.white70,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       Stack(
@@ -446,9 +446,9 @@ class MyAppState extends State<MyApp> {
                         ),
                         Text(
                           ' ',
-                            style: TextStyle(
+                          style: TextStyle(
                             height: 1.5,
-                            ),
+                          ),
                         ),
                         Text(
                           'Oh Oh, Houston we have a problem!',
