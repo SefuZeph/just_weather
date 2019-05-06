@@ -99,6 +99,8 @@ class MyAppState extends State<MyApp> {
                   var fm = new DateFormat('MMMM dd, yyyy');
                   var fm_hour = new DateFormat.Hm();
 
+                  print(model.weather[0].icon);
+
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -116,10 +118,15 @@ class MyAppState extends State<MyApp> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Image.network(
-                                'https://openweathermap.org/img/w/${model.weather[0].icon}.png',
-                                width: 50,
-                                height: 50,
+                              //Image.network(
+                              //  'https://openweathermap.org/img/w/${model.weather[0].icon}.png',
+                              //  width: 50,
+                              //  height: 50,
+                              //),
+                              Image.asset(
+                                'assets/images/weather/${model.weather[0].icon}.png',
+                                width: 100,
+                                fit: BoxFit.fitWidth,
                               ),
                               Text(
                                 '${model.main.temp}°C',
@@ -227,7 +234,7 @@ class MyAppState extends State<MyApp> {
                                               width: 160.0,
                                               decoration: new BoxDecoration(
                                                 borderRadius:
-                                                    BorderRadius.circular(8),
+                                                    BorderRadius.circular(20),
                                                 color: Colors.white,
                                                 boxShadow: [
                                                   new BoxShadow(
@@ -276,7 +283,7 @@ class MyAppState extends State<MyApp> {
                                               width: 160.0,
                                               decoration: new BoxDecoration(
                                                 borderRadius:
-                                                    BorderRadius.circular(8),
+                                                    BorderRadius.circular(20),
                                                 color: Colors.white,
                                                 boxShadow: [
                                                   new BoxShadow(
@@ -325,7 +332,7 @@ class MyAppState extends State<MyApp> {
                                               width: 160.0,
                                               decoration: new BoxDecoration(
                                                 borderRadius:
-                                                    BorderRadius.circular(8),
+                                                    BorderRadius.circular(20),
                                                 color: Colors.white,
                                                 boxShadow: [
                                                   new BoxShadow(
@@ -374,7 +381,7 @@ class MyAppState extends State<MyApp> {
                                               width: 160.0,
                                               decoration: new BoxDecoration(
                                                 borderRadius:
-                                                    BorderRadius.circular(8),
+                                                    BorderRadius.circular(20),
                                                 color: Colors.white,
                                                 boxShadow: [
                                                   new BoxShadow(
@@ -411,6 +418,55 @@ class MyAppState extends State<MyApp> {
                                                       letterSpacing: 0.25,
                                                       fontWeight:
                                                           FontWeight.normal,
+                                                      fontFamily: 'Roboto',
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              padding: EdgeInsets.all(20),
+                                              margin: EdgeInsets.all(5),
+                                              width: 160.0,
+                                              decoration: new BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius.circular(20),
+                                                color: Colors.white,
+                                                boxShadow: [
+                                                  new BoxShadow(
+                                                    color: Colors.black,
+                                                    blurRadius: 2.0,
+                                                  )
+                                                ],
+                                              ),
+                                              child: new Column(
+                                                mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                                children: <Widget>[
+                                                  new Icon(
+                                                    Icons.visibility,
+                                                    color: Colors.black54,
+                                                    size: 40,
+                                                  ),
+                                                  Text(
+                                                    'Visibility',
+                                                    style: TextStyle(
+                                                      fontSize: 15.0,
+                                                      height: 1.5,
+                                                      letterSpacing: 0.25,
+                                                      fontWeight:
+                                                      FontWeight.bold,
+                                                      fontFamily: 'Montserrat',
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '${model.visibility / 1000} km',
+                                                    style: TextStyle(
+                                                      fontSize: 15.0,
+                                                      height: 1.0,
+                                                      letterSpacing: 0.25,
+                                                      fontWeight:
+                                                      FontWeight.normal,
                                                       fontFamily: 'Roboto',
                                                     ),
                                                   ),
@@ -504,6 +560,7 @@ class MyAppState extends State<MyApp> {
               Expanded(
                 child: IconButton(
                   icon: Icon(Icons.home),
+                  color: Color.fromRGBO(31, 42, 255, 1.0),
                   onPressed: () {},
                 ),
               ),
@@ -511,6 +568,7 @@ class MyAppState extends State<MyApp> {
               Expanded(
                 child: IconButton(
                   icon: Icon(Icons.search),
+                  color: Color.fromRGBO(31, 42, 255, 1.0),
                   onPressed: () {},
                 ),
               ),
@@ -532,7 +590,7 @@ class MyAppState extends State<MyApp> {
         error = 'Permission Denied';
       else if (e.code == 'PERMISSION_DENIED_NEVER_ASK')
         error =
-            'Permission Denied - Please ask the user to enable it from app settings';
+        'Permission Denied - Please ask the user to enable it from app settings';
       my_location = null;
     }
     setState(() {

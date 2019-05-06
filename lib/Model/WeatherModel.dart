@@ -138,6 +138,7 @@ class WeatherModel {
             .toList(),
         base: json['base'],
         main: Main.fromJson(json['main']),
+        visibility: json['visibility'],
         wind: Wind.fromJson(json['wind']),
         clouds: Clouds.fromJson(json['clouds']),
         dt: json['dt'],
